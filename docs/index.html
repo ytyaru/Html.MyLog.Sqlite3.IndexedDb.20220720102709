@@ -3,7 +3,7 @@
 <head prefix="og: https://ogp.me/ns# article: https://ogp.me/ns/article#">
 <meta charset="utf-8">
 <title>つぶやきをDB保存する</title>
-<meta name="description" content="取引の総額や相手のアドレスと数などを表示する。">
+<meta name="description" content="IndexedDBに保存しSQLite3ファイルとしてダウンロード＆アップロードする。">
 <meta name="author" content="ytyaru">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja">
 <link rel="icon" href="asset/image/avator.png">
@@ -15,10 +15,10 @@
 <meta property="og:type" content="profile" />
 <meta property="og:site_name" content="ytyaru" />
 <meta property="og:title" content="つぶやきをDB保存する" />
-<meta property="og:description" content="取引の総額や相手のアドレスと数などを表示する。" />
-<meta property="og:image" content="https://ytyaru.github.io/Html.SQLite3.IndexedDb.CreateTable.Transactions.20220710153738/asset/image/eye-catch.png" />
-<meta property="article:modified_time" content="2022-07-19T15:45:00+09:00" />
-<meta property="article:published_time" content="2022-07-19T15:45:00+09:00" />
+<meta property="og:description" content="IndexedDBに保存しSQLite3ファイルとしてダウンロード＆アップロードする。" />
+<meta property="og:image" content="https://ytyaru.github.io/Html.MyLog.Sqlite3.IndexedDb.20220720102709/asset/image/eye-catch.png" />
+<meta property="article:modified_time" content="2022-07-20T15:30:00+09:00" />
+<meta property="article:published_time" content="2022-07-20T15:25:00+09:00" />
 <meta property="article:author" content="https://ytyaru.github.io/" />
 <meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">
@@ -44,10 +44,10 @@
         "https://meisskey.one/@ytyaru",
       ]
     },
-    "dateModified": "2022-07-19T15:45:00+09:00",
-    "datePublished": "2022-07-19T15:45:00+09:00",
+    "dateModified": "2022-07-20T15:30:00+09:00",
+    "datePublished": "2022-07-20T15:25:00+09:00",
     "headline": "つぶやきをDB保存する",
-    "image": ["https://ytyaru.github.io/Html.SQLite3.IndexedDb.CreateTable.Transactions.20220710153738/asset/image/eye-catch.png"]
+    "image": ["https://ytyaru.github.io/Html.MyLog.Sqlite3.IndexedDb.20220720102709/asset/image/eye-catch.png"]
   }
 </script>
 <link rel="webmention" href="https://webmention.io/ytyaru.github.io/webmention" />
@@ -139,11 +139,35 @@
 <body>
 <h1>つぶやきをDB保存する</h1>
 <details><summary>使い方</summary>
+<h2>つぶやく</h2>
 <ol>
 <li>テキストエリアに好きなテキストを入力する</li>
 <li><kbd>つぶやく</kbd>ボタンを押す</li>
 <li>ページに表示される</li>
 </ol>
+<h2>ダウンロード</h2>
+<ol>
+<li><kbd>ダウンロード</kbd>ボタンを押す</li>
+<li><code>mylog.db</code>ファイル（SQLite3のDB）がダウンロードされる</li>
+</ol>
+<p>　IndexedDBに保存されているデータをすべてSQLite3ファイルに含める。</p>
+<h2>アップロード</h2>
+<ol>
+<li><kbd>ファイルをドラッグ＆ドロップ</kbd>に<code>mylog.db</code>をドラッグ＆ドロップする</li>
+<li>IndexedDBがファイルと同じ内容に上書きされる</li>
+</ol>
+<p>　SQLite3ファイルのデータでIndexedDBを上書きする。</p>
+<h2>ファイル追記</h2>
+<ol>
+<li>アップロード後につぶやく</li>
+</ol>
+<p>　上書きしたくなければバックアップしておくこと。</p>
+<h2>全削除</h2>
+<ol>
+<li><kbd>全削除</kbd>ボタンを押す</li>
+<li>IndexedDBに保存されているデータがすべて消える</li>
+</ol>
+
 </details>
 <textarea id="content" value="" placeholder="つぶやく内容" cols="40" rows="5"></textarea>
 <button id="post" type="button">つぶやく</button>
@@ -169,7 +193,7 @@
 -->
 
 <!--
-<p>取引の総額や相手のアドレスと数などを表示する。プロフィールは<a href="https://ytyaru.github.io/Html.GAS.Mastodon.Misskey.Address.Profile.20220620171245/">mpurseのアドレスとプロフィールを登録する</a>で登録されたものを使う。なければアドレスのみ。</p>
+<p>IndexedDBに保存しSQLite3ファイルとしてダウンロード＆アップロードする。プロフィールは<a href="https://ytyaru.github.io/Html.GAS.Mastodon.Misskey.Address.Profile.20220620171245/">mpurseのアドレスとプロフィールを登録する</a>で登録されたものを使う。なければアドレスのみ。</p>
 <details><summary>旧版</summary>
 <ul>
 <li><a href="https://ytyaru.github.io/Html.Mona.Transaction.Viewer.Circle.20220621093148/">モナコイン取引集計＋取引ユーザ相関図</a></li>
